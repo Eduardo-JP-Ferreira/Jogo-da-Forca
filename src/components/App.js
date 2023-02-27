@@ -40,14 +40,25 @@ function App() {
       console.log("CLICOU")
       console.log("AApalavra",arrayPalavra)
       console.log("UNder",arrayUnderline)
+      const pegaIndice = []
+      
       if(arrayPalavra.includes(letra)){
-        console.log("Pa",letra) 
+        console.log("Letra",letra) 
         let indice = arrayPalavra.indexOf(letra)
-        console.log("Pa",indice)
-        
-        arrayUnderline[indice]=letra
-        const novoArray = [...arrayUnderline]
-        setArrayUnderline(novoArray)
+        console.log("Indice",indice)
+
+        while(indice !== -1){
+          pegaIndice.push(indice)
+          indice = arrayPalavra.indexOf(letra, indice + 1)
+          //pega todas as letras repetidas e coloca no array
+        }
+        console.log("IndiceAP",pegaIndice)
+
+        for(let i = 0; i< pegaIndice.length; i++){
+          arrayUnderline[pegaIndice[i]]=letra
+          const novoArray = [...arrayUnderline]
+          setArrayUnderline(novoArray)
+        }
         console.log("novo",arrayUnderline)
       }
       else{
