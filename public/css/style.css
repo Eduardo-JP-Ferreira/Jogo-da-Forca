@@ -33,6 +33,8 @@ img{
     position: absolute;
     right: 0;
     top: 0;
+    justify-content: right;
+    align-items: end;
 }
 .botaoEscolherPalavra{
     width: 200px;
@@ -45,6 +47,7 @@ img{
     margin-top: 89px;
     margin-right: 53px;
     cursor: pointer;
+
 }
 .botaoEscolherPalavra p{
     color: white;
@@ -52,6 +55,7 @@ img{
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
+
 }
 .palavra{
     margin-top: 278px;
@@ -63,7 +67,9 @@ img{
     font-size: 50px;
     line-height: 68px;
 }
-
+.invisivel{
+    display: none;
+}
 .containerLetras{
     display: flex;
     flex-wrap: wrap;
