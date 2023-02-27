@@ -13,9 +13,9 @@ export default function Letras(props){
                 
                 <div className="letras">
                     {props.habilitado === "0" ? (
-                        <button key={item} type="button" value={item} onClick={() => props.clique(item) } disabled><span>{item}</span></button>
+                        <button data-test="letter" key={item} type="button" value={item} onClick={() => props.clique(item) } disabled><span>{item}</span></button>
                     ) : (
-                    <button key={item} type="button" onClick={() => props.clique(item)} >{item}</button>)}
+                    <button data-test="letter" key={item} type="button" onClick={() => props.clique(item)} >{item}</button>)}
                 </div>
             )}
         </div>
