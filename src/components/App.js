@@ -16,11 +16,25 @@ function App() {
   const [arrayPalavra, setArrayPalavra] = useState([])
   const [letrasClicadas, setLetrasClicadas] = useState([])
   const [qntLetras, setQntLetras] = useState(0)
-  const [valorCor, setValorCor] = useState(0)
+  const [resultado, setResultado] = useState("")
   //const arrayPalavra = [""];
 
   console.log("ComeçoUNder", arrayUnderline)
+
   function escolherPalavra() {
+
+    // setHabilitarLetras("0")
+    // setHabilitar("0")
+    setErros(0)
+    // arrayUnderline = []
+    // setElemento("")
+    // setArrayPalavra([])
+    setResultado("")
+    setLetrasClicadas([])
+    setQntLetras(0)
+    
+    
+
     const elemento2 = palavras[Math.floor(Math.random() * palavras.length)]
     console.log("palavra", elemento2)
     setElemento(elemento2)
@@ -30,6 +44,14 @@ function App() {
 
     console.log("arayzin", arrayzin)
     console.log("under", arrayUnderline)
+    const tamanho = arrayUnderline.length
+    const tamanho2 = arrayPalavra.length
+    for(let j =0; j<=tamanho; j++){
+      arrayUnderline.pop()
+    }
+    for(let k =0; k<=tamanho; k++){
+      arrayPalavra.pop()
+    }
     for (let i = 0; i < arrayzin.length; i++) {
       arrayUnderline.push("_ ")
       arrayPalavra[i] = arrayzin[i]
@@ -66,6 +88,7 @@ function App() {
       for (let i = 0; i < pegaIndice.length; i++) {
         arrayUnderline[pegaIndice[i]] = letra
         const novoArray = [...arrayUnderline]
+        console.log(novoArray)
         setArrayUnderline(novoArray)
         contadorLetras = contadorLetras + 1
         console.log("LETRAS QNT", contadorLetras)
@@ -73,7 +96,8 @@ function App() {
       setQntLetras(contadorLetras)
       if(contadorLetras == arrayPalavra.length){
         setHabilitarLetras("0");
-        alert("Venceu!")
+        setResultado("verde")
+
       }
       console.log("novo", arrayUnderline)
     }
@@ -83,7 +107,11 @@ function App() {
     else {
       setErros(erros + 1)
       setHabilitarLetras("0");
-      alert("PERDEU")
+      setResultado("vermelho")
+      for (let i = 0; i < arrayUnderline.length; i++) {
+        arrayUnderline[i] = arrayPalavra[i]
+      }
+
     }
   }
 
@@ -93,16 +121,18 @@ function App() {
     <div className="containerTotal">
       <Jogo
         escolherPalavra={escolherPalavra}
-        imagens={imagens} erros={erros}
-        habilitar={habilitar} setHablitar={setHabilitar}
-        arrayUnderline={arrayUnderline} />
+        imagens={imagens} 
+        erros={erros}
+        habilitar={habilitar} 
+        setHablitar={setHabilitar}
+        arrayUnderline={arrayUnderline} 
+        resultado={resultado}/>
 
       <Letras
         habilitado={habilitarLetras}
         clique={clique}
         erros={erros}
         setErros={setErros}
-        valorCor ={valorCor}
         letrasClicadas={letrasClicadas} />
     </div>
   );

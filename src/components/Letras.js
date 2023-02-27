@@ -10,7 +10,7 @@ export default function Letras(props){
         <div className="containerLetras">
             {alfabeto.map((item)=>
                 
-                <div className="letras">
+                <div className={(props.letrasClicadas.includes(item) || props.habilitado === "0") ? "desabilitado letras" : "letras"}>
                     <button data-test="letter" key={item} type="button"
                     disabled={(props.letrasClicadas.includes(item) || props.habilitado === "0") ? true:false}
                     onClick={() => props.clique(item)} >{item}</button>

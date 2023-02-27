@@ -15,7 +15,7 @@ export default function Jogo(props){
                     <div data-test="choose-word" className="botaoEscolherPalavra" onClick={props.escolherPalavra}>
                         <p>Escolher Palavra</p>
                     </div>
-                    <div className="palavra">
+                    <div className={(props.resultado === "") ? "palavra" : `palavra ${props.resultado}`}>
                         {props.habilitar === "0" ? 
                         (<p data-test="word" className="invisivel">{props.arrayUnderline}</p>) : 
                         (<p data-test="word">{props.arrayUnderline}</p>)}
